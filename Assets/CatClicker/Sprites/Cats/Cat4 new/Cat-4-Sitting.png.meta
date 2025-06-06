@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,10 +113,10 @@ TextureImporter:
       name: Cat-1-Idle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 50
-        height: 50
+        x: 18
+        y: 18
+        width: 14
+        height: 16
       alignment: 9
       pivot: {x: 0.5, y: 0.36}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,204 +127,6 @@ TextureImporter:
       bones: []
       spriteID: 4b0f428ca650dfb40800000000000000
       internalID: 5475538678134927540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat-1-Idle_1
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 0
-        width: 50
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 98c456051a0aefbf0800000000000000
-      internalID: -288616711406138231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat-1-Idle_2
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 0
-        width: 50
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 52d917a550d82fc80800000000000000
-      internalID: -8290408909903913691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat-1-Idle_3
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 0
-        width: 50
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5fc090f7ec66d0550800000000000000
-      internalID: 6128667705001708789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat-1-Idle_4
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 50
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7a463cd368ef1cb10800000000000000
-      internalID: 2000159562044499111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat-1-Idle_5
-      rect:
-        serializedVersion: 2
-        x: 250
-        y: 0
-        width: 50
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 824ab6d65036ddff0800000000000000
-      internalID: -9742749223115736
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat-1-Idle_6
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 0
-        width: 50
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 220dbc8dfce8b1020800000000000000
-      internalID: 2313599856931491874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat-1-Idle_7
-      rect:
-        serializedVersion: 2
-        x: 350
-        y: 0
-        width: 50
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b61cc31199bb9af40800000000000000
-      internalID: 5740325466153992555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat-1-Idle_8
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 50
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2934f372b195a404c845bd6ce7f8f388
-      internalID: -6674994834477895563
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat-1-Idle_9
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 0
-        width: 50
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.36}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02deafe4b22d54a4ca488fff50ad3385
-      internalID: -1391884642046984779
       vertices: []
       indices: 
       edges: []

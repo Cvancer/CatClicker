@@ -116,10 +116,10 @@ TextureImporter:
       name: Cat-6-Sitting_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 50
-        height: 50
+        x: 18
+        y: 18
+        width: 13
+        height: 16
       alignment: 9
       pivot: {x: 0.5, y: 0.36}
       border: {x: 0, y: 0, z: 0, w: 0}

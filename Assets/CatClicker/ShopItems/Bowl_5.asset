@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Bowl_5
   m_EditorClassIdentifier: 
   _type: 1
-  _image: {fileID: 21300000, guid: f23a8bcb237b7aa41b6510bda014e711, type: 3}
+  _image: {fileID: 3704980084940059657, guid: 28a436de5ae5bcf4b9f930db1dd7c74b, type: 3}
   _price: 2400
   _name: 5
   _amount: 8
   _id: 5
+  _kind: Purple bowl
