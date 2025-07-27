@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Cat : MonoBehaviour
@@ -76,7 +75,7 @@ public class Cat : MonoBehaviour
             Random.Range(-1f, 1f)
         ).normalized;
 
-        if (_spriteRenderer != null) // Защита от NullReference
+        if (_spriteRenderer != null) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ NullReference
             _spriteRenderer.flipX = _currentDirection.x < 0;
     }
     private void Update()
