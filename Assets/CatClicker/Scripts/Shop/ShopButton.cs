@@ -6,15 +6,17 @@ using System;
 [RequireComponent(typeof(Button))]
 public class ShopButton : MonoBehaviour
 {
-    [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _price;
-    [SerializeField] private TextMeshProUGUI _name;
+
+    
 
     private ShopItem _shopItem;
     private GameState _gameState;
+    private UIRoot _uIRoot;
 
-    public void Initialize (GameState gameState, ShopItem shopItem)
+    public void Initialize (GameState gameState, ShopItem shopItem, UIRoot uIRoot)
     {
+        _uIRoot = uIRoot;
         if (shopItem == null)
         {
             gameObject.SetActive(false);
@@ -23,21 +25,25 @@ public class ShopButton : MonoBehaviour
         gameObject.SetActive(true);
         var button = GetComponent<Button>();
         button.interactable = gameState.FishStorage.FishCount >= shopItem.Price;
-        _icon.sprite = shopItem.Image;
         _price.text = $"Price: {shopItem.Price}";
-        _name.text = shopItem.Name;
         _shopItem = shopItem;
         _gameState = gameState;
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => _gameState.FishStorage.TrySpendFish(_shopItem.Price, SuccessfulBuy));
-        
-
     }
 
+    private ItemNotification GetPrefab()
+    {
+        var prefabName = _shopItem.Type == ShopItemType.BOWL ? "Bowl" : _shopItem.name;
+        return Resources.Load<ItemNotification>($"Prefabs/Notifications/{prefabName}");
+    }
 
     private void SuccessfulBuy()
     {
+        var panel = Instantiate(GetPrefab(),_uIRoot.transform);
+        panel.transform.position += Vector3.down * 50;
+        panel.Initialize(_shopItem);
         switch (_shopItem.Type)
         {
             case ShopItemType.CAT:
@@ -52,6 +58,7 @@ public class ShopButton : MonoBehaviour
                 throw new ArgumentException("Unexpected type");
 
         }
+
     }
     
 }

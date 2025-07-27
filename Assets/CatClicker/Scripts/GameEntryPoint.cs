@@ -1,92 +1,103 @@
 using System.Collections;
-
 using UnityEngine;
 
 
 public class GameEntryPoint : MonoBehaviour
 {
     [SerializeField] private UIRoot UIRootPrefab;
-    [SerializeField] private Room _room;
-    [SerializeField] private AudioSource _music; 
+    [SerializeField] private Sounds _sounds;
 
+
+    private Room _room;
     private UIRoot _uiRoot;
     private GameState _gameState;
 
-    private void SaveGame()
-    {
-        var json = JsonUtility.ToJson(_gameState);
-        PlayerPrefs.SetString("Game", json);
-        Debug.Log("GameSaved");
-    }
+    
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        _gameState.SaveGame();
     }
 
-    private GameState LoadGame(GameState defaultData)
+    private void RespawnRoom()
     {
-        if (!PlayerPrefs.HasKey("Game"))
+        if (_room != null)
         {
-            return defaultData;
+            Destroy(_room.gameObject);
+
         }
-        var json = PlayerPrefs.GetString("Game");
-        return JsonUtility.FromJson<GameState>(json);
+        var roomPrefab = Resources.Load<Room>($"Prefabs/Rooms/Room{_gameState.CurrentRoom}");
+        if (roomPrefab != null)
+        {
+            _room = Instantiate(roomPrefab, new Vector3(0, -0.34f, 0), Quaternion.identity);
+            _room.gameObject.name = _room.gameObject.name.Replace("(Clone)", "");
+            _room.Initialize(_gameState);
+        }
     }
 
-    private void Update()
+
+    private IEnumerator ChangeRoomCutScene()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SaveGame();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            _gameState = LoadGame(new GameState());
-            Reset();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            _gameState = new GameState();
-            Reset();
-        }
+        _uiRoot.DeactivateAll();
+        //_sounds.StopSound(Sounds.MUSIC);
+        yield return new WaitForSeconds(1.5f);
+        _sounds.PlaySound(Sounds.LIGHTON);
+        _uiRoot.LightOff();
+        yield return new WaitForSeconds(1.5f);
+        _sounds.PlaySound(Sounds.REPAIR);
+        RespawnRoom();
+        yield return new WaitForSeconds(_sounds.GetSoundDuration(Sounds.REPAIR)+ 1f);
+        _sounds.PlaySound(Sounds.LIGHTON);
+        _uiRoot.LightOn();
+        yield return new WaitForSeconds(1.5f);
+        //_sounds.PlaySound(Sounds.MUSIC);
+        _uiRoot.ActivateAll();
+
     }
+   
 
 
-    private void SetVolume()
-    {
-        _music.volume = _gameState.Volume;
-    }
+
 
 
     private void StartGame()
     {
-
-        _room.Initialize(_gameState);
+        RespawnRoom();
         _uiRoot = Instantiate(UIRootPrefab);
         _uiRoot.Initialize(_gameState);
         StartCoroutine(AddFishPerSecond());
-
-        _gameState.OnVolumeChange += SetVolume;
-        SetVolume();
-        _music.Play();
+        _sounds.Initialize(_gameState);
+        _sounds.PlaySound(Sounds.MUSIC);
+        
 
     }
 
-    private void Reset()
+   private void Reset()
     {
         StopAllCoroutines();
         Destroy(_uiRoot.gameObject);
-        _gameState.OnVolumeChange -= SetVolume;
         StartGame();
 
     }
 
+    private void OnDestroy()
+    {
+        _gameState.OnBuyRoom -= RunCutScene;
+        _gameState.OnGameStateChanged -= Reset;
+    }
 
+    private void RunCutScene()
+    {
+        StartCoroutine(ChangeRoomCutScene());
+
+    }
 
     private void Awake()
     {
-        _gameState = LoadGame(new GameState());
+        _gameState = new GameState();
+        _gameState.LoadGame(new GameState());
+        _gameState.OnBuyRoom += RunCutScene;
+        _gameState.OnGameStateChanged += Reset;
         StartGame();
     }
 
